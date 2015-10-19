@@ -1,0 +1,103 @@
+<!-- START Header -->
+    <script id="main-nav-template" type="text/x-handlebars-template">
+        {{#each navigation}}
+        <li><a href="{{ link }}">{{ text }}</a>
+            {{#if children}}
+            <ul class="dropdown-menu">
+                {{#each children}}
+                <li><a href="{{ link }}">{{ text }}</a>
+                    {{#if children}}
+                    <ul class="dropdown-menu">
+                        {{#each children}}
+                        <li><a href="{{ link }}">{{ text }}</a></li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                </li>
+                {{/each}}
+                <span class="divider-vertical"></span>
+                <div class="featured-navigation-content">
+                    <p class="large-text-display">{{ featured.text }}</p>
+                    {{#if featured.author}}
+                    <p><i>&mdash;{{ featured.author }}</i></p>
+                    {{/if}}
+                </div>
+            </ul>
+            {{/if}}
+        </li>
+        {{/each}}
+        <li class="last-child"><a id="main-nav-search-button" href="#"><i class="glyphicon glyphicon-search"></i></a></li>
+    </script>
+    <script id="mobile-nav-template" type="text/x-handlebars-template">
+        {{#each navigation}}
+        <li><a class="toggle-submenu" href="{{ link }}">{{ text }}<span class="icon-arrow-down"></span></a>
+            {{#if children}}
+            <ul>
+                {{#each children}}
+                <li><a class="toggle-second-level-submenu" href="{{ link }}">{{ text }}<span class="icon-arrow-down"></span></a>
+                    {{#if children}}
+                    <ul>
+                        {{#each children}}
+                        <li><a href="{{ link }}">{{ text }}</a></li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+        </li>
+        {{/each}}
+    </script>
+
+
+
+    <!-- mobile header -->
+    <header id="mobile-header" class="clearfix hidden-sm hidden-md hidden-lg">
+        <div id="mobile-port">
+            <figure id="mobile-logo">
+                <img src="/resources/images/nav-logo.jpg" class="img-responsive" alt="GSA Logo">
+            </figure>
+            <form accept-charset="UTF-8" action="http://search.gsa.gov/search" id="mobile-search" method="get">
+                <input name="affiliate" type="hidden" value="gsa.gov">
+                <input name="utf8" type="hidden" value="?">
+                <div class="form-group">
+                    <label class="sr-only" for="query">Enter Search Term(s):</label>
+                    <input autocomplete="off" class="form-control usagov-search-autocomplete ui-autocomplete-input" id="mobile_query" name="query" type="text" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+                    <button id="submit-search" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </div>
+            </form>
+            <button id="hamburger-toggle" class="cmn-toggle-switch cmn-toggle-switch__htx visible-sm visible-xs toggled toggled-off">
+                <span>toggle menu</span>
+            </button>
+        </div>
+        <nav id="slideout-menu">
+            <ul><!-- TEMPLATE FOR MOBILE NAV --></ul>
+        </nav>
+    </header>
+    <!-- /mobile header -->
+
+    <header id="inner-main-navigation" class="navbar-fixed-top hidden-xs">
+        <div id="skip" style="width: 100%;" class="text-center"><a href="#page-content">Skip to Main Content</a></div>
+        <nav class="navbar navbar-default container" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"><img class="img-responsive" src="/resources/images/nav-logo.jpg"></a>
+            </div>
+            <ul class="nav navbar-nav" id="main-nav">
+                <!-- TEMPLAT OF NAV GOES HERE -->
+            </ul>
+            <!-- search form -->
+            <form class="main-nav-search-field" accept-charset="UTF-8" action="http://search.gsa.gov/search" id="search_form" method="get">
+                <div class="search-input form-group">
+                    <input name="utf8" type="hidden" value="?">
+                    <input id="affiliate" name="affiliate" type="hidden" value="gsa.gov">
+                    <div style="position:relative">
+                        <label for="query" class="sr-only">Enter Search Term(s):</label>
+                        <input autocomplete="off" class="usagov-search-autocomplete ui-autocomplete-input fsrVisible form-control" id="query" name="query" type="text" role="textbox" aria-autocomplete="list" aria-haspopup="true" placeholder="Search">
+                        <button type="submit" id="submit-gsa-search" name="commit" class="btn btn-default"><span class="icon-arrow-right"></span></button>
+                    </div>
+                </div>
+            </form>
+        </nav>
+    </header>
+<!-- end header -->
